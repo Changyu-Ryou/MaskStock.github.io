@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+	    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+			<title>약국 재고 알림</title>
+			<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7b3rr1fq7g"></script>
+		</head>
+
+		<body>
+			 <header>
+    
+         <DIV style="float:left;">
+    <a href="/index.html"><img src='/web/upload/category/editor/2020/03/05/13a6a5f0a9849c292754ae3d85eb9cc7.png' alt="HOME" width="30%"/></a>
+            
+    
+    <a href="/index.html"><img src='/web/upload/category/editor/2020/03/04/ed02789a2a4844bc5caf7d8ebef92153.png' alt="HOME" width="30%" style="float:right;"/></a>
+            </DIV>
+        &nbsp <br>
+    </header>
+    
+    
+ 
+     
+     
+  <DIV style="TEXT-ALIGN: center">
+      &nbsp <br> 
+     <td><img src='/web/upload/category/editor/2020/03/08/bcf1c05871d40eaff854999b1f337109.png' alt="HOME" width="70%"/></td>
+<br><br><br> &nbsp <br> <br>
+
+
+
+
+<!----------------------------------------------------------------------------------------->
+
+		<div id="map" style="width:100%;height:400px;"></div>
+
+		<p></p>
+
+
+
+
+
+			<script
+	  src="https://code.jquery.com/jquery-3.4.1.js"
+	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	  crossorigin="anonymous"></script>
+
+	<script>
+
+		
+		var markers = [],infoWindows = [];
+        
+		var mapOptions = {
+	    center: new naver.maps.LatLng(37.3595704, 127.105399),
+	    zoom: 15
+		};
+
+
+		var map = new naver.maps.Map('map', {
+		    center: new naver.maps.LatLng(37.5666805, 126.9784147),
+		    zoom: 15,
+		    mapTypeId: naver.maps.MapTypeId.NORMAL
+		});
+
+		var infowindow = new naver.maps.InfoWindow();
+
+		function onSuccessGeolocation(position) {
+		    var location = new naver.maps.LatLng(position.coords.latitude,
+		                                         position.coords.longitude);
+
+		    map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+		    map.setZoom(14); // 지도의 줌 레벨을 변경합니다.
+
+            var marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(location),
+                map: map
+            });
+            
+            
+		    infowindow.setContent('<div style="padding:0px;">' + '현재 위치' + '</div>');
+
+		    infowindow.open(map, location);
+		    console.log('Coordinates: ' + location.toString());
+		}
+
+		function onErrorGeolocation() {
+		    var center = map.getCenter();
+
+		    infowindow.setContent('<div style="padding:20px;">' +
+		        '<h5 style="margin-bottom:5px;color:#f00;">Geolocation failed!</h5>'+ "latitude: "+ center.lat() +"<br />longitude: "+ center.lng() +'</div>');
+
+		    infowindow.open(map, center);
+		}
+
+		$(window).on("load", function() {
+		    if (navigator.geolocation) {
+		        /**
+		         * navigator.geolocation 은 Chrome 50 버젼 이후로 HTTP 환경에서 사용이 Deprecate 되어 HTTPS 환경에서만 사용 가능 합니다.
+		         * http://localhost 에서는 사용이 가능하며, 테스트 목적으로, Chrome 의 바로가기를 만들어서 아래와 같이 설정하면 접속은 가능합니다.
+		         * chrome.exe --unsafely-treat-insecure-origin-as-secure="http://example.com"
+		         */
+		        navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+		    } else {
+		        var center = map.getCenter();
+		        infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5></div>');
+		        infowindow.open(map, center);
+		    }
+		});
+
+
+var bounds = map.getBounds(),
+    southWest = bounds.getSW(),
+    northEast = bounds.getNE(),
+    lngSpan = northEast.lng() - southWest.lng(),
+    latSpan = northEast.lat() - southWest.lat();
+
+	var count;
+
+/////////////////////////////////////////////////////////////////////////////////////////
+	if(navigator.geolocation) {
+	            
+	            navigator.geolocation.getCurrentPosition(function(position) {
+	                
+	              	latitud = position.coords.latitude;
+	            	longitude = position.coords.longitude;
+	            	list(latitud,longitude);
+
+				})
+	    }else {
+	            consol.log("Geolocation을 지원하지 않는 브라우저 입니다.");
+	    }
+
+
+
+		function list(lat,long){
+
+	  	var a = "37.2748596";
+	  	var b = "127.0518847";
+	  	var c= "1500";					//검색 범위 (m)
+
+		var latitud;
+		var longitude;
+
+	  		 // Geolocation 객체를 사용
+	        
+	   
+
+
+
+	        $.ajax({
+				  method: "GET",
+				  url: "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json",
+				  data: { lat: lat, lng: long ,m: c },
+				  success: function (msg) { 
+
+				  	console.log(msg);
+
+				    count = msg.count;
+				 
+				    $( "p" ).append( 
+
+				    	"<h3> 현재 좌표는 "+lat+", "+long+"입니다.</h3><br>"
+				    	);
+				    for(var i=0;i<count;i++){
+				    	if(msg.stores[i].remain_stat=="plenty"){
+                            var marker = new naver.maps.Marker({
+                                
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/web/image/cross_green.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+                                
+                            });
+                       }else if(msg.stores[i].remain_stat=="few"){
+                           var marker = new naver.maps.Marker({
+                                
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/web/image/cross_red.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+                                
+                            });       
+                           
+                        }else if(msg.stores[i].remain_stat=="some"){
+                           var marker = new naver.maps.Marker({
+                                
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/web/image/cross_yellow.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+                                
+                            });                
+                                     
+                                     
+                       }else{
+                           var marker = new naver.maps.Marker({
+                                
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/web/image/cross_gray.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+                                
+                            });
+                                     
+                                     
+                                     
+                            };//if문
+  							var infoWindow = new naver.maps.InfoWindow({
+                                content: '<div  align="left" style="padding:20px; float:left;"><strong>약국명</strong> '+msg.stores[i].name+'<br>'+
+				    		'<strong>주소</strong> '+msg.stores[i].addr+'<br>'+
+				    		'<strong>마스크 잔여량</strong> '+msg.stores[i].remain_stat+'<br>'+
+				    		'<strong>마지막 데이터 갱신시간</strong> '+msg.stores[i].stock_at+'<br></div>'
+                            });
+                            
+                            
+                            
+                             markers.push(marker);
+   							 infoWindows.push(infoWindow);
+                            
+                           
+							
+                        
+				   		}			//for문
+
+				   		viewcon();
+				    
+				    }		//success문
+
+
+				   })//ajax 끝
+
+
+		};				//function 끝	
+        
+        
+
+
+		function viewcon(){
+
+					naver.maps.Event.addListener(map, 'idle', function() {
+					    updateMarkers(map, markers);
+					});
+
+					function updateMarkers(map, markers) {
+
+					    var mapBounds = map.getBounds();
+					    var marker, position;
+
+					    for (var i = 0; i < markers.length; i++) {
+
+					        marker = markers[i]
+					        position = marker.getPosition();
+
+					        if (mapBounds.hasLatLng(position)) {
+					            showMarker(map, marker);
+					        } else {
+					            hideMarker(map, marker);
+					        }
+					    }
+					}
+
+					function showMarker(map, marker) {
+
+					    if (marker.setMap()) return;
+					    marker.setMap(map);
+					}
+
+					function hideMarker(map, marker) {
+
+					    if (!marker.setMap()) return;
+					    marker.setMap(null);
+					}
+
+					// 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+					function getClickHandler(seq) {
+					    return function(e) {
+					        var marker = markers[seq],
+					            infoWindow = infoWindows[seq];
+
+					        if (infoWindow.getMap()) {
+					            infoWindow.close();
+					        } else {
+					            infoWindow.open(map, marker);
+					        }
+					    }
+					}
+
+					for (var i=0, ii=markers.length; i<ii; i++) {
+					    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+					}
+
+
+		}
+
+				  
+
+	        
+	        	
+
+	  		
+		
+
+		
+
+	</script>
+
+	  		
+
+		</body>
+
+	</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160172096-1"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+<title></title>
+<!--@css(/layout/basic/css/layout.css)-->
+<!--@css(/layout/basic/css/common.css)-->
+<!--@js(/js/ui.js)-->
+
+
+<style>
+        body {
+            color: #555;
+            background: #ffffff;
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;}
+
+        h1 {
+            padding: 50px 0;
+            font-weight: 400;
+            text-align: center;}
+
+        p {
+            margin: 0 0 20px;
+            line-height: 1.5;}
+
+        .main {
+            min-width: 100%;
+            max-width: 100%;
+
+            margin: 0 auto;
+            background: #ffffff;}
+
+        section {
+            display: none;
+            padding: 20px 0 0;
+            border-top: 1px solid #ddd;}
+
+        /*라디오버튼 숨김*/
+          input {
+              display: none;}
+
+        label {
+            min-width: 30%;
+            max-width: 30%;
+            display: inline-block;
+            margin: 0 0 -1px;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-align: center;
+            color: #bbb;
+            border: 1px solid transparent;}
+
+        label:hover {
+            color: #ba0d0d;
+            cursor: pointer;}
+
+        /*input 클릭시, label 스타일*/
+        input:checked + label {
+              color: #555;
+              border: 1px solid #ddd;
+              border-top: 2px solid #ba0d0d;
+              border-bottom: 1px solid #ffffff;}
+
+        #tab1:checked ~ #content1,
+        #tab2:checked ~ #content2,
+        #tab3:checked ~ #content3,
+        #tab4:checked ~ #content4 {
+            display: block;}
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+  <header>
+
+   <DIV style="float:left;">
+    <a href="/index.html"><img src='/image/back.png' alt="HOME" width="30%"/></a>
+
+    
+    <a href="/index.html"><img src='/image/title_small.png' alt="HOME" width="30%" style="float:right;"/></a>
+  </DIV>
+</header>
+<br><br>
+
+<DIV style="TEXT-ALIGN: center">
+ <br> <br>
+ <td><img src='/image/howto.png' alt="HOME" width="60%"/></td>
+
+ <br><br>
+
+
+
+
+    <div class="main">
+    <input id="tab1" type="radio" name="tabs" checked > <!--디폴트 메뉴-->
+    <label for="tab1">구매 노하우 영상</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">빠른 이용 가이드</label>
+
+
+   <section id="content1">
+        
+        
+          
+      <br><br>
+      
+      
+      <p>아래 영상은 개발자가 직접 시도한 마스크 구매 영상입니다.</p>
+      <p>결제단계에서 버벅이는 바람에 실패했지만, 어떻게 구매해야할지 모르시는 분들을 위해 올려두겠습니다~</p>
+      <br><br>
+
+ <iframe width="100%" height="600" src="https://www.youtube.com/embed/lYcwW_ivupA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+     <br><br><br><br>
+    </section>
+
+          
+ 
+         
+          
+          <!-------------------------------------------------시간미정마스크--------------------------------------------------->
+    <section id="content2">
+
+
+              <br><br>
+   
+          <DIV style="TEXT-ALIGN: center">
+              &nbsp <br> 
+             <td><img src='/image/howtonew22.png' alt="HOME" width="100%"/></td>
+        <br><br><br>
+
+
+
+ </section>
+
+</DIV>
+
+</body>
+</html>

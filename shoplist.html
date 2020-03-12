@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ko">
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160172096-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160172096-1');
+</script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <title></title>
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/common.css)-->
+    <!--@js(/js/ui.js)-->
+    <style type="text/css">
+
+a { text-decoration:none; color:#000000;}
+
+</style>
+
+<style>
+        body {
+            color: #555;
+            background: #ffffff;
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;}
+
+        h1 {
+            padding: 50px 0;
+            font-weight: 400;
+            text-align: center;}
+
+        p {
+            margin: 0 0 20px;
+            line-height: 1.5;}
+
+        .main {
+            min-width: 100%;
+            max-width: 100%;
+
+            margin: 0 auto;
+            background: #ffffff;}
+
+        section {
+            display: none;
+            padding: 20px 0 0;
+            border-top: 1px solid #ddd;}
+
+        /*라디오버튼 숨김*/
+          input {
+              display: none;}
+
+        label {
+            min-width: 30%;
+            max-width: 30%;
+            display: inline-block;
+            margin: 0 0 -1px;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-align: center;
+            color: #bbb;
+            border: 1px solid transparent;}
+
+        label:hover {
+            color: #ba0d0d;
+            cursor: pointer;}
+
+        /*input 클릭시, label 스타일*/
+        input:checked + label {
+              color: #555;
+              border: 1px solid #ddd;
+              border-top: 2px solid #ba0d0d;
+              border-bottom: 1px solid #ffffff;}
+
+        #tab1:checked ~ #content1,
+        #tab2:checked ~ #content2,
+        #tab3:checked ~ #content3,
+        #tab4:checked ~ #content4 {
+            display: block;}
+    </style>
+
+
+
+</head>
+<body>
+    <header>
+    
+         <DIV style="float:left;">
+    <a href="/index.html"><img src='/image/back.png' alt="HOME" width="30%"/></a>
+            
+    
+    <a href="/index.html"><img src='/image/title_small.png' alt="HOME" width="30%" style="float:right;"/></a>
+            </DIV>
+        &nbsp <br>
+    </header>
+    
+    
+ 
+     
+     
+  <DIV style="TEXT-ALIGN: center">
+      &nbsp <br> 
+     <td><img src='/image/TODAYMASK.png' alt="HOME" width="70%"/></td>
+<br><br><br> &nbsp <br> <br>
+      
+      
+      
+      
+      
+      
+      
+         <!-----------------------------------------------------------------위에까지 타이틀 ----------------------------------------------->
+        
+      <div class="main">
+    <input id="tab1" type="radio" name="tabs" checked > <!--디폴트 메뉴-->
+    <label for="tab1">오늘의 알림</label>
+
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">시간 미정 마스크</label>
+<!--
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">tab menu3</label>
+
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4">tab menu4</label>
+
+-->
+<!-------------------------------------------------알림마스크--------------------------------------------------->
+    <section id="content1">
+        
+        
+          
+      <br><br>
+      
+      
+      <p>아래 목록은 마스크 판매 예정 시간이<br><Strong>공지돼있는</Strong> 판매처 목록입니다.
+        <br><br>
+      마스크 알리미 앱에서<br><strong>알림을 전송해 드리겠습니다.</strong></p>
+      <br><br>
+
+
+      
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/aseado/products/4837257765"><img src='/image/Seller/mima.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오전 9:00] 미마 마스크 <br><strong>1인 10매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+    
+    
+    
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/aer-shop/products/4722827602"><img src='/image/Seller/are.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오전 9:45] 아에르 마스크 <br><strong>1인 10매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+    
+    
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/gonggami/products/4705579501"><img src='/image/Seller/newnepure.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [게릴라판매 오전 10시~11시 사이]<br>뉴네퓨어 마스크 <br><strong>1인 1팩(5매) 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+
+<!-----
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/carmang1825/products/4834056954"><img src='/web/upload/category/editor/2020/03/08/55d77eae9912444a87965aa0921a1f0e.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오전 10:00] 해피키친 마스크 <br><strong>1인 2매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+---->
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/neulhaerangmask/products/4632987981"><img src='/image/Seller/neul.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오전 10:00] 늘해랑 일반마스크 <br><strong>1인 1통(50매) 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+
+
+     <div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://store.kakao.com/laomete/products/55563134"><img src='https://st.kakaocdn.net/thumb/R750x0.fjpg.q82/?fname=https%3A%2F%2Fst.kakaocdn.net%2Fshoppingstore%2Fproduct%2F20200310123653_1f690fcd738a48cc88686faef7d2e0c3.jpg' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오전 10:30] 라오메뜨 마스크 <br><strong>1인 5매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/soommask/products/4828127993"><img src='/image/Seller/hue.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오후 1:00] 휴그린 <br><strong>1인 5매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+     
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/shyman/products/4843275185"><img src='/image/Seller/kind.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [게릴라판매 10:00~10:05 사이<br>게릴라판매 13:00~13:05 사이] <br>착한마스크 <br><strong>1인 2매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>    
+    
+    
+  	
+
+
+    
+        <!--끄트트틑------------
+
+
+ <div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="http://www.blancpool.co.kr/product/detail.html?product_no=102&cate_no=25&display_group=1"><img src='/image/Seller/blang.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오전 10:00] 블랑플 일반마스크 <br><strong>1인 1통(40매) 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>
+
+
+
+
+
+
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="http://www.oh-saja.com/product/detail.html?product_no=133&cate_no=1&display_group=6"><img src='/image/Seller/hill.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [오후 6:00]<br>힐메이드 마스크 <p style="color:red;"><strong>회원가입 필요</strong></p><br><strong>1인 5매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>  
+
+
+
+
+
+
+
+          --------------------------------------------------------------->
+        
+    </section>
+
+          
+ 
+         
+          
+          <!-------------------------------------------------시간미정마스크--------------------------------------------------->
+    <section id="content2">
+
+
+              <br><br>
+
+        <p>아래 목록은 마스크 판매 예정 시간이<br><Strong>공지돼있지 않은</Strong> 판매처 목록입니다.
+        <br><br>
+      사이트 접속을 통해 <Strong>직접 재입고 확인</Strong>을 하셔야합니다.</p>
+      <br><br>
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="http://www.welkeepsmall.com/shop/shopbrandCA.html?type=X&xcode=023"><img src='/image/Seller/well.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [판매시간 미정] <br>웰킵스몰<br><strong>사이즈,제품 다양</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>    
+
+
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/ygfac/products/3905641271"><img src='https://shop-phinf.pstatic.net/20191209_202/1575892459994YD4Ei_PNG/13255848497159600_974873789.png?type=m510' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [수시판매] <br>프리데이 KF80 마스크<br><strong>대형 5매입</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br> 
+
+
+
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/pyeongpyoen/products/4751210548"><img src='https://shop-phinf.pstatic.net/20200113_37/1578909726463iY1aO_JPEG/16273114987797129_995399569.jpg?type=m510' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [판매시간 미정] <br>평편 KF94마스크<br><strong>대형 5매입</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br> 
+
+
+
+
+
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/mfbshop/products/4072435942?site_preference=device&NaPm="><img src='/image/Seller/drpuri.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [재입고 미정] <br>닥터퓨리<br><strong>1인 20매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>    
+
+
+
+
+
+<div style="width:80%; height:100%; text-align:center; font-size:14pt; border:1px solid #CCCCCC; margin: auto; overflow:hidden; height:auto;">
+     <td><a href="https://smartstore.naver.com/wiicare/products/4242262742"><img src='/image/Seller/WECARE.PNG' alt="HOME" width="100%"/></td> <br><br>
+      <p style="font-size:20px;font-family:나눔고딕; line-height:150%"> [재입고 미정] <br>위케어 KF94 대형<br><strong>1인 10매 제한</strong></p><br>
+         </a>
+      </div>
+     &nbsp <br> <br><br><br><br>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+          <!--
+    <section id="content3">
+        <p>tab menu3의 내용</p>
+    </section>
+
+    <section id="content4">
+        <p>tab menu4의 내용</p>
+    </section>
+-->
+</div>
+
+
+
+
+
+
+
+   
+</body>
+</html>
+  
+    
+
+      
+
+
+        <!--
+      
+      <br>
+      <td><a href=""><img src='/web/upload/category/editor/2020/03/05/fceb9e0ce5691a3297314bf40cb55311.png' alt="COMPANY" width="30%"/></a></td>
+      &nbsp &nbsp &nbsp
+      <td><a href="https://"><img src='/web/upload/category/editor/2020/03/05/ceb15a33a4523e2e8827e3944f03ab68.png' alt="COMPANY" width="30%"/></a></td>
+      <br><br><br>
+      <td><a href="https://m.mail.naver.com/"><img src='/web/upload/category/editor/2020/03/05/7dcf91c792e4972f1b6bffc3702aad93.png' alt="COMPANY" width="30%"/></a></td>
+      &nbsp &nbsp &nbsp
+      <td><a href="http://bitly.kr/XrSQTggc"><img src='/web/upload/category/editor/2020/03/05/7fb8b308122bcf6c96b9795e4a6f5564.png' alt="COMPANY" width="30%"/></a></td>
+      <br>
+      
+      
+      
+     
+    <span style = " font: 1.4em/1.3em Georgia ;">
+  <strong>마스크 재고 알리미</strong> 개발자 Dev_R입니다.<br><br>
+        </span>
+    
+    오늘 03월 05일의 알림은 종료되었습니다.<br>
+      내일 오전 알림이 시작됩니다.<br>
+      
+      <br>
+      * 사용방법<br>
+      앱을 깔아 놓으시기만 하면 자동으로 알림이 갑니다.
+      
+        <span style="color:red"> <h5>(03/05 - 예상치 못한 새벽 알림이 전송되어 다시 수정하였습니다.)</h5></span><br>
+ 현재 알림을 드리는 마스크의 종류는 총 10곳 입니다.<BR>(2020-03-05기준)<br><br>
+        
+<strong>[게릴라 판매하는 마스크]</strong><br>
+국대마스크, 
+금아-덴탈마스크,  
+동국제약 마스크<br>
+닥터퓨리 마스크,  
+뉴네퓨어 마스크<br>
+3M 1급 방진마스크 8822 & 8922,  
+ 에티카 마스크<br><br>
+
+<strong>[정해진 시각에 판매하는 마스크]</strong><br>
+미마마스크,  
+아에르마스크, 
+        휴그린 마스크<br><br>
+        <span style = " font: 1em/1.3em Georgia ;">
+      	지속적으로 업데이트 해 나아가고 있으며,<br>
+        버그, 오류, 문의는 아래 <strong>오픈채팅 링크</strong>를 통해 부탁드립니다.<br><br>
+        
+    
+     </span>
+        </DIV>
+        <DIV style="TEXT-ALIGN: center">
+    <DIV style="TEXT-ALIGN: center">
+        <h4>아래 버튼을 클릭해 미리 네이버에 로그인해 두세요</h4>
+         <td><a href="https://nid.naver.com/nidlogin.login?svctype=262144&url=http://m.naver.com/aside/"><img src='/web/upload/category/editor/2020/03/04/e8cbb7f2f883ff116f5bc280f5de9e17.png' alt="COMPANY"width="15%"/></a></td><br>
+        <h4>당분간 새로운 업데이트 버전은<br>아래 '새로운 소식'을 통해 확인하실 수 있습니다.</h4>
+	<td><a href="https://m.blog.naver.com/PostView.nhn?blogId=dog9511&logNo=221836199186&proxyReferer="><img src='/web/upload/category/editor/2020/03/04/13e2df5c82fa8297f45e0aabb9efb5a2.png' alt="COMPANY"/></a></td>
+    <td><a href="http://bitly.kr/XrSQTggc"><img src='/web/upload/category/editor/2020/03/04/9902961f894b4a2c5a91bd90aa67aad4.png' alt="COMPANY"/></a></td>
+       
+        -->
+       
