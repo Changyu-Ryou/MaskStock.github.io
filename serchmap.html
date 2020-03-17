@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>약국 재고 알림</title>
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7b3rr1fq7g"></script>
+
+</head>
+
+<body>
+	<header>
+
+		<DIV style="float:left;">
+			<a href="/index.html"><img src='/image/back.png' alt="HOME" width="30%"/></a>
+
+
+			<a href="/index.html"><img src='/image/title_small.png' alt="HOME" width="30%" style="float:right;"/></a>
+		</DIV>
+	</header>
+
+
+
+	<DIV style="TEXT-ALIGN: center">
+		<td><img src='/image/nearmask.png' alt="HOME" width="70%"/></td>
+
+		<br> &nbsp
+		<H3>현재 새로운 업데이트가 올라왔습니다.<br>업데이트를 통해 아래 공적마스크 재고 확인이 가능합니다.</H3>
+		<br>
+		<p> 아울러 아래 정보는 <strong>"건강보험심사평가원"</strong>에서 제공한 정보로 마지막 데이터 갱신시간에 따라 표기되는 정보와 다를 수 있습니다.</p>
+
+		<br><br><br><br>
+		주소지 검색<br>
+
+		<input type="text" id="input"><br>
+		<textarea id="output"></textarea>
+
+		<button onclick="inputts()">입력받기</button>
+		<button onclick="Checker()">출력하기</button><br>
+
+		<textarea name='Status'> </textarea>
+		<input type='button' value='Status Update'>
+
+		<script type="text/javascript">
+
+			$(function () {
+				$('input').on('click', function () {
+					var Status = $(this).val();
+					$.ajax({
+						url: 'Ajax/StatusUpdate.php',
+						data: {
+							text: $("textarea[name=Status]").val(),
+							Status: Status
+						},
+						dataType : 'json'
+					});
+				});
+			});
+
+
+		</script>
+
+
+
+		<br><br>
+		<td><img src='/image/stockinfo.png' alt="HOME" width="100%"/></td>
+
+		<!----------------------------------------------------------------------------------------->
+
+		<div id="map" style="width:100%;height:400px;"></div>
+
+		<p></p>
+		<br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+		<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+
+		<script>
+			
+			function Checker(){
+				$.ajax({
+					method: "POST",
+					url: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode",
+					data: { query	: "temp"},
+					header: {X-NCP-APIGW-API-KEY-ID: "7b3rr1fq7g", X-NCP-APIGW-API-KEY:"K30QoFYOiG8izKzgRNTeLUBtli6JqZjsMLA3dVB0"}
+				})
+				.done(function( msg ) {
+					alert( "Data Saved: " + msg );
+				});
+
+			}
+
+		</script>
+
+
+
+	</div>
+
+
+
+</body>
+
+</html>
