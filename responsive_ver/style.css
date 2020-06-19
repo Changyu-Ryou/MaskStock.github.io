@@ -250,11 +250,11 @@ header {
 .title {
     color: gray;
     text-align: center;
-    padding-top: 10.5rem;
+    padding-top: 12.5rem;
 }
 
 .title-heading {
-    font-size: 3.6rem;
+    font-size: 4.6rem;
     line-height: 1.07143;
     letter-spacing: -0.005rem;
 }
@@ -309,11 +309,12 @@ header {
 
 .app-intro {
     
-    background-size: auto 69.8rem;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+   
     height: 69.8rem;
-    background: url("img/hero/iphone_11/mask_large_final_shadow.png") center no-repeat;
+    background: url("img/hero/iphone_11/mask_large_final_shadow.png");
+    background-size: auto 69.8rem;
+    background-position: center bottom;
+    background-repeat: no-repeat;
     margin-top: 1.6rem;
 }
 
@@ -646,7 +647,7 @@ header {
     }
 
     .title{
-        padding-top: 4.7rem;
+        padding-top: 7.7rem;
     }
 
     .title-heading{
@@ -675,18 +676,17 @@ header {
     }
 
     .app-intro{
-        background-size: auto 42.8rem;
+        background-size: auto 25.8rem;
         background-position: bottom center;
         background-repeat: no-repeat;
-        height: 42.8rem;
-        background: url("img/hero/iphone_11/mask_large_final_shadow.png") bottom center no-repeat;
+        height: 37.8rem;
         margin-top: 1.6rem;
     }
 
     .title-app{
         color: gray;
         text-align: center;
-        padding-top: 4.5rem;
+        padding-top: 6.5rem;
         padding-bottom: 2.5rem;
     }
 

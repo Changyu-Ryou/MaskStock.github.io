@@ -1,6 +1,6 @@
 .app-how {
     position: relative;
-    height: 60.8rem;
+    height: 55.8rem;
     margin-top: 1.6rem;
 }
 
@@ -74,5 +74,236 @@
     float: left;
     top: 10%;
     left: 0;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
+}
+
+
+.review-box{
+    width: 350px; 
+    height: 180px; 
+    margin-bottom: 30px; 
+    border-radius: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.img-box2{
+    background-image:url('https://lh3.googleusercontent.com/proxy/zoaRq0URg5EjcG5fVmnNHaDPuB0dzX_K9RxUHGtBY8rDLsuIA0q4cqmRJTI0_HR9sA0rQtcClGIpDFUizIQoWGj8BccmEHRqV3L32B_afnF_lOu7CsZj9otVTs9gSWX92oGvJ47Ov4lR_GL5JGDwFgXQn26T2kxKzmqMm79jYPdhthj79hVWAcDSDKcLZff_Bij-8z9FAQ'); 
+    background-position: top center; 
+    background-size: 100% auto;
+    
+    background-repeat: no-repeat;
+    width: 10%;
+    height: 100%;
+    float: left;
+    border-radius: 15px 15px 0 0;
+}
+
+.img-text-box{
+    text-align: left;
+    float: left;
+    width: 80%;
+    height: 30rem;
+    padding-left: 10px;
+    
+    margin-top: 10px;
+    font-size: 19px;
+    overflow: hidden;
+     text-overflow: ellipsis; /* 여러 줄 자르기 추가 스타일 */ 
+     white-space: normal; 
+     line-height: 1.2; 
+     height: 6.8em;
+     text-align: left; 
+     word-wrap: break-word; 
+     display: -webkit-box; 
+     -webkit-line-clamp: 6; 
+     -webkit-box-orient: vertical;
+
+}
+.boxs{
+    width: 85%;
+    min-height: 30rem; 
+    justify-content: space-evenly; 
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.write-name{
+    color: teal;
+    font-weight: 500;
+}
+
+
+.nav-link-playstore2{
+    width: 18rem;
+    height: auto;
+    display: inline-block;
+    object-fit:contain;
+   
+}
+
+.nav-link-playstore3{
+    width: 21.5rem;
+    height: auto;
+    display: inline-block;
+    object-fit:contain;
+   
+}
+
+.fixed-download-text2{
+    display: inline;
+    color: black;
+    font-size: 22px;
+    padding-top: 3px;
+}
+
+.ctalink{
+    display: inline-block;
+
+}
+.title{
+    text-align: -webkit-center;
+    padding-top: 7.5rem;
+}
+.title2{
+    text-align: -webkit-center;
+    padding-top: 10rem;
+}
+
+.title-sub-heading2{
+    width: 50%;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    letter-spacing: 0.008rem;
+    font-weight: 400;
+}
+
+
+.title-heading {
+    font-size: 3.6rem;
+    line-height: 1.07143;
+    letter-spacing: -0.005rem;
+}
+
+
+@media screen and (max-width: 1068px) {
+
+
+    .main-back-img{
+
+        float: left;
+        width: 100%;
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 100%;
+        background-image: url("img/undraw_app_wireframe_9ssu.svg");
+        background-size: auto 25rem;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+    
+        /* background-size: auto 20rem;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        height: 60.8rem;
+        background-image: url("img/undraw_app_wireframe_9ssu.svg");
+        margin-top: 1.6rem; */
+    }
+
+
+.contain-title{
+    width: 100%;
+    position: absolute;
+    float: right;
+    top: 0%;
+    text-align: center;
+    right: 0;
+}
+
+.contain-title2{
+    width: 100%;
+    position: absolute;
+    float: left;
+    top: 10%;
+    left: 0;
+    margin-bottom: 60px;
+}
+
+
+.review-box{
+    width: 300px; 
+    height: 150px; 
+    margin-bottom: 30px; 
+    border-radius: 15px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.review-box:nth-child(2n){
+    display: none;
+}
+
+.title{
+    padding-top: 4rem;
+    text-align: -webkit-center;
+}
+
+.title2{
+    padding-top: 3rem;
+    text-align: -webkit-center;
+}
+
+.main-back-img2{
+
+    float: right;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    
+    height: 100%;
+   
+    background-image: url("img/undraw_calendar_dutt.svg");
+    background-size: auto 20rem;
+    background-repeat: no-repeat;
+    background-position: center bottom 20px;
+
+
+    /* background-size: auto 20rem;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    height: 60.8rem;
+    background-image: url("img/undraw_app_wireframe_9ssu.svg");
+    margin-top: 1.6rem; */
+}
+
+
+.boxs{
+    width: 90%;
+    min-height: 30rem; 
+    justify-content: space-evenly; 
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 30px;
+   
+}
+
+.title-sub-heading2{
+    width: 60%;
+    font-size: 1.8rem;
+    margin-top: 0.6rem;
+    letter-spacing: 0.008rem;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.title-heading{
+    margin-top: 15px;
+    font-size: 2.7rem;
+}
+
 }
