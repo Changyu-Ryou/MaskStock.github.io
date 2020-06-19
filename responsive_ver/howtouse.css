@@ -1,0 +1,78 @@
+.app-how {
+    position: relative;
+    height: 60.8rem;
+    margin-top: 1.6rem;
+}
+
+.main-back-img{
+
+    float: left;
+    width: 50%;
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    background-image: url("img/undraw_app_wireframe_9ssu.svg");
+    background-size: auto 43rem;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+    /* background-size: auto 20rem;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    height: 60.8rem;
+    background-image: url("img/undraw_app_wireframe_9ssu.svg");
+    margin-top: 1.6rem; */
+}
+
+.contain-title{
+    width: 70%;
+    position: absolute;
+    float: right;
+    top: 30%;
+    right: 0;
+}
+
+
+
+
+.app-how2 {
+    position: relative;
+    min-height: 45.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background: white;
+}
+
+
+.main-back-img2{
+
+    float: right;
+    width: 50%;
+    position: absolute;
+    top:0;
+    right: 0;
+    height: 100%;
+   
+    background-image: url("img/undraw_calendar_dutt.svg");
+    background-size: auto 20rem;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+    /* background-size: auto 20rem;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    height: 60.8rem;
+    background-image: url("img/undraw_app_wireframe_9ssu.svg");
+    margin-top: 1.6rem; */
+}
+
+.contain-title2{
+    width: 70%;
+    position: absolute;
+    float: left;
+    top: 10%;
+    left: 0;
+    margin-bottom: 100px;
+}

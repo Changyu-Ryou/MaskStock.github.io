@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stock.css" />
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7b3rr1fq7g"></script>
+    <title>마스크 재판매 알리미</title>
+
+</head>
+
+<body onclick="document.getElementById('map').focus()">
+    <header>
+        <div class="container">
+            <div class="nav">
+                <ul class="nav-list nav-list-mobile">
+                    <li class="nav-item">
+                        <div class="mobile-menu">
+                            <span class="line line-top"></span>
+                            <span class="line line-bottom"></span>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./index.html" class="nav-link nav-link-mask">마스크 알리미</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-bag"></a>
+                    </li>
+                </ul>
+                <!-- /.nav-list nav-list-mobile -->
+                <ul class="nav-list nav-list-larger">
+                    <li class="nav-item nav-item-hidden">
+                        <a href="./index.html" class="nav-link nav-link-mask">마스크 알리미</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./today.html" class="nav-link">오늘의 마스크</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">공적 마스크 재고</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">이용방법</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://dev-r.tistory.com/" class="nav-link">개발자 블로그</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://bitly.kr/XrSQTggc" class="nav-link">오류, 문의하기</a>
+                    </li>
+
+                    <li class="nav-item nav-item-playstore">
+                        <a href='https://play.google.com/store/apps/details?id=com.DevR.mask'>
+                            <div class="nav-link nav-link-playstore"></div>
+                            <div class="fixed-download-text">&nbsp;Google Play</div>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- /.nav-list nav-list-larger -->
+            </div>
+            <!-- /.nav -->
+        </div>
+        <!-- /.container -->
+    </header>
+
+    <section class="map-text" id='map-text'>
+        <div class="contain">
+            <div class="title">
+                <h4 class="title-heading">주변 약국의 마스크 재고를 확인하세요</h4>
+            </div>
+        </div>
+        
+    </section>
+
+    <div id="map"></div>
+
+    <p></p>
+
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://underscorejs.org/underscore.js"></script>
+
+    <script>
+
+
+        var markers = [], infoWindows = [];
+
+        var mapOptions = {
+            mapTypeControl: true,
+            mapTypeControlOptions: {
+                style: naver.maps.MapTypeControlStyle.BUTTON,
+                position: naver.maps.Position.TOP_RIGHT
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+
+                style: naver.maps.ZoomControlStyle.SMALL,
+                position: naver.maps.Position.TOP_RIGHT
+            },
+            scaleControl: true,
+            scaleControlOptions: {
+                position: naver.maps.Position.RIGHT_CENTER
+            },
+            logoControl: true,
+            logoControlOptions: {
+                position: naver.maps.Position.TOP_LEFT
+            },
+            mapDataControl: true,
+            mapDataControlOptions: {
+                position: naver.maps.Position.BOTTOM_LEFT
+            },
+            center: new naver.maps.LatLng(37.3595704, 127.105399),
+            zoom: 15,
+            mapTypeId: naver.maps.MapTypeId.NORMAL
+        };
+
+
+        var map = new naver.maps.Map('map', mapOptions);
+        var countchange = 0;
+
+        var infowindow = new naver.maps.InfoWindow();
+
+        function onSuccessGeolocation(position) {
+            var location = new naver.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+
+            map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
+            map.setZoom(14); // 지도의 줌 레벨을 변경합니다.
+
+            var marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(location),
+                map: map
+            });
+
+
+            infowindow.setContent('<div style="padding:0px;">' + '현재 위치' + '</div>');
+
+            infowindow.open(map, location);
+            console.log('Coordinates: ' + location.toString());
+        }
+
+
+
+        var mapswindow = document.getElementById('map');
+        window.addEventListener('click', _.debounce(function () {
+            var past = 0;
+
+            console.log('click');
+            if (navigator.geolocation) {
+                //console.log('맞음');
+                console.log('Center: ' + map.getCenter().toString() + ', Bounds: ' + bounds.toString());
+                
+                    latitud = map.getCenter()._lat;
+                    longitude = map.getCenter()._lng;
+
+                    console.log('latt: ' + latitud + ', longitude: ' +longitude);
+                    list(latitud, longitude);
+
+                
+            } else {
+                console.log('아직아님');
+            }
+
+        }, 700));
+
+        // naver.maps.Event.addListener(map, 'bounds_changed', function (bounds) {
+
+        //     //contentEl.find('.center').text(map.getCenterPoint());
+        //     console.log('Center: ' + map.getCenter().toString() + ', Bounds: ' + bounds.toString());
+        //     var now = map.getCenter();
+        //     countchange = countchange + 1;
+        //     var mapswindow = document.getElementById('map');
+
+
+        // });
+
+
+        function onErrorGeolocation() {
+            var center = map.getCenter();
+
+            infowindow.setContent('<div style="padding:20px;">' +
+                '<h5 style="margin-bottom:5px;color:#f00;">[오류] GPS 사용 승인이 필요합니다.</h5><br>앱 실행시 GPS 사용을 승인해 주세요</div>');
+
+            infowindow.open(map, center);
+
+
+        }
+
+        $(window).on("load", function () {
+            if (navigator.geolocation) {
+                /**
+                 * navigator.geolocation 은 Chrome 50 버젼 이후로 HTTP 환경에서 사용이 Deprecate 되어 HTTPS 환경에서만 사용 가능 합니다.
+                 * http://localhost 에서는 사용이 가능하며, 테스트 목적으로, Chrome 의 바로가기를 만들어서 아래와 같이 설정하면 접속은 가능합니다.
+                 * chrome.exe --unsafely-treat-insecure-origin-as-secure="http://example.com"
+                 */
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+            } else {
+                var center = map.getCenter();
+                infowindow.setContent('<div style="padding:20px;"><h5 style="margin-bottom:5px;color:#f00;">Geolocation not supported</h5></div>');
+                infowindow.open(map, center);
+
+
+            }
+        });
+
+        var bounds = map.getBounds(),
+            southWest = bounds.getSW(),
+            northEast = bounds.getNE(),
+            lngSpan = northEast.lng() - southWest.lng(),
+            latSpan = northEast.lat() - southWest.lat();
+
+        var count;
+
+        /////////////////////////////////////////////////////////////////////////////////////////
+        if (navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                latitud = position.coords.latitude;
+                longitude = position.coords.longitude;
+                list(latitud, longitude);
+
+            })
+        } else {
+            consol.log("Geolocation을 지원하지 않는 브라우저 입니다.");
+        }
+
+        function list(lat, long) {
+
+            var a = "37.2748596";
+            var b = "127.0518847";
+            var c = "1000";					//검색 범위 (m)
+
+            var latitud;
+            var longitude;
+
+            // Geolocation 객체를 사용
+
+            $.ajax({
+                method: "GET",
+                url: "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json",
+                data: { lat: lat, lng: long, m: c },
+                success: function (msg) {
+                    console.log(msg);
+                    count = msg.count;
+                    for (var i = 0; i < count; i++) {
+                        if (msg.stores[i].remain_stat == "plenty") {
+                            var marker = new naver.maps.Marker({
+
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/image/cross_green.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+
+                            });
+                            var infoWindow = new naver.maps.InfoWindow({
+                                content: '<div  align="left" style="padding:10px; font-size: 12px; float:left;"><strong>약국명: </strong>' + msg.stores[i].name + '<br>' +
+                                    '<strong>주소</strong>: ' + msg.stores[i].addr + '<br>' +
+                                    '<strong>마스크 잔여량</strong>: 100개 이상 남음<br>' +
+                                    '<strong>입고시간:</strong> ' + msg.stores[i].stock_at + '<br>' +
+                                    '<strong>데이터 생성 시간:</strong> ' + msg.stores[i].created_at + '<br></div>'
+                            });
+                        } else if (msg.stores[i].remain_stat == "few") {
+                            var marker = new naver.maps.Marker({
+
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/image/cross_red.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+
+                            });
+                            var infoWindow = new naver.maps.InfoWindow({
+                                content: '<div  align="left" style="padding:10px; font-size: 16px; float:left;"><strong>약국명</strong>: ' + msg.stores[i].name + '<br>' +
+                                    '<strong>주소:</strong> ' + msg.stores[i].addr + '<br>' +
+                                    '<strong>마스크 잔여량:</strong> 2 ~ 29개 남음<br>' +
+                                    '<strong>입고 시간:</strong> ' + msg.stores[i].stock_at + '<br>' +
+                                    '<strong>데이터 생성 시간:</strong> ' + msg.stores[i].created_at + '<br></div>'
+                            });
+                        } else if (msg.stores[i].remain_stat == "some") {
+                            var marker = new naver.maps.Marker({
+
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/image/cross_yellow.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+
+                            });
+                            var infoWindow = new naver.maps.InfoWindow({
+                                content: '<div  align="left" style="padding:10px; font-size: 16px; float:left;"><strong>약국명</strong>: ' + msg.stores[i].name + '<br>' +
+                                    '<strong>주소</strong>: ' + msg.stores[i].addr + '<br>' +
+                                    '<strong>마스크 잔여량:</strong> 30 ~ 99개 남음<br>' +
+                                    '<strong>입고 시간:</strong> ' + msg.stores[i].stock_at + '<br>' +
+                                    '<strong>데이터 생성 시간:</strong> ' + msg.stores[i].created_at + '<br></div>'
+                            });
+
+                        } else {
+                            var marker = new naver.maps.Marker({
+
+                                position: new naver.maps.LatLng(msg.stores[i].lat, msg.stores[i].lng),
+                                map: map,
+                                icon: {
+                                    url: '/image/cross_gray.png',
+                                    size: new naver.maps.Size(15, 15),
+                                    origin: new naver.maps.Point(0, 0),
+                                    anchor: new naver.maps.Point(7, 8)
+                                },
+                                zIndex: 100
+
+                            });
+
+
+                            var infoWindow = new naver.maps.InfoWindow({
+                                content: '<div align="left" style="width:250px; font-size: 13px; padding:10px; line-height:130%; float:left;"><strong>약국명:</strong> ' + msg.stores[i].name + '<br>' +
+                                    '<strong>주소:</strong> ' + msg.stores[i].addr +
+                                    '<div style="color:red;"><strong>마스크 잔여량:</strong> 매진</div>' +
+                                    '<strong>입고 시간:</strong> ' + msg.stores[i].stock_at + '<br>' +
+                                    '<strong>데이터 생성 시간:</strong> ' + msg.stores[i].created_at + '<br></div>'
+                            });
+                        };//if문
+                        markers.push(marker);
+                        infoWindows.push(infoWindow);
+                    }			//for문
+                    viewcon();
+                    
+                }		//success문
+            })//ajax 끝
+        };				//function 끝	
+
+
+        function viewcon() {
+
+            naver.maps.Event.addListener(map, 'idle', function () {
+                updateMarkers(map, markers);
+            });
+
+            function updateMarkers(map, markers) {
+
+                var mapBounds = map.getBounds();
+                var marker, position;
+
+                for (var i = 0; i < markers.length; i++) {
+
+                    marker = markers[i]
+                    position = marker.getPosition();
+
+                    if (mapBounds.hasLatLng(position)) {
+                        showMarker(map, marker);
+                    } else {
+                        hideMarker(map, marker);
+                    }
+                }
+            }
+
+            function showMarker(map, marker) {
+
+                if (marker.setMap()) return;
+                marker.setMap(map);
+            }
+
+            function hideMarker(map, marker) {
+
+                if (!marker.setMap()) return;
+                marker.setMap(null);
+            }
+
+            // 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+            function getClickHandler(seq) {
+                return function (e) {
+                    var marker = markers[seq],
+                        infoWindow = infoWindows[seq];
+
+                    if (infoWindow.getMap()) {
+                        infoWindow.close();
+                    } else {
+                        infoWindow.open(map, marker);
+                    }
+                }
+            }
+
+            for (var i = 0, ii = markers.length; i < ii; i++) {
+                naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+            }
+
+
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer">
+            <div class="footer-info">
+                <div class='footer-info one'>개발자: 류찬규 (Dev_R)</div>
+                <span class="bar">|</span>
+                <div class='footer-info one'>학교: 경기대학교 컴퓨터과학과</div>
+                <span class="bar">|</span>
+                <div class='footer-info one'>고객문의 :ycg02116@naver.com</div>
+                <br /><br />
+                마스크 재판매 알리미 App
+            </div>
+
+            <div class="copy-info">Copyright © Dev_R. All rights reserved.</div><br /><br />
+            <div class="social-info">
+                <a href="#">
+                    <img class="footer-icon footer-facebook" alt="facebook"
+                        src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-facebook-794156884f3fbb3ed53a9b9dfdef204a9b31159148fa6c267b486416f8b0a4ae.svg">
+                </a>
+                <a href="#">
+                    <img class="footer-icon footer-instagram" alt="instagram"
+                        src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-instagram-321a1f6337e5e31aedec21e5b9d32ec20a6d61980b8d2d289c54f3adcda08f74.svg">
+                </a>
+                <a href='#'>
+                    <img class="footer-icon footer-blog" alt="blog"
+                        src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-blog-fe4923c0ca92c1cf177e7dd898967967f25a23818244f48a941c797fa8b96206.svg">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- <script src="main.js"></script> -->
+    <script src="stockjs.js"></script>
+</body>
+
+</html>
