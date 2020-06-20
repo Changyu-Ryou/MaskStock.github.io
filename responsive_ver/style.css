@@ -122,7 +122,7 @@ header {
 }
 
 .title-app{
-    color: gray;
+    color: #212529;
     text-align: center;
     padding-top: 10.5rem;
     padding-bottom: 5.5rem;
@@ -242,13 +242,15 @@ header {
 }
 
 .nav-link-bag {
-    width: 1.4rem;
-    height: 4.4rem;
-    background: url("img/icons/bag.svg") center no-repeat;
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    background: url("img/icons/play.png") center no-repeat;
+    background-size: 100% auto;
 }
 
 .title {
-    color: gray;
+    color: #212529;
     text-align: center;
     padding-top: 12.5rem;
 }
@@ -303,7 +305,27 @@ header {
 .cta-link:hover {
     border-bottom: 2px solid #66bbff;
 }
+.nav-link-playstore2{
+    width: 18rem;
+    top:0;
+    height: auto;
+    display: inline-block;
+    padding-bottom: 4px;
+    object-fit:contain;
+   
+}
 
+.nav-link-playstore3{
+    width: 24.5rem;
+    height: auto;
+    display: inline-block;
+    object-fit:contain;
+   
+}
+.ctalink{
+    display: inline-block;
+
+}
 
 /*app intro*/
 
@@ -311,7 +333,7 @@ header {
     
    
     height: 69.8rem;
-    background: url("img/hero/iphone_11/mask_large_final_shadow.png");
+    background: url("img/mask_large_final_shadow.png");
     background-size: auto 69.8rem;
     background-position: center bottom;
     background-repeat: no-repeat;
