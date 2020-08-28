@@ -96,6 +96,55 @@
     
 }
 
+.main {
+    min-width: 100%;
+    max-width: 100%;
+    margin: 50px auto;
+    background: #ffffff;
+}
+
+section {
+    display: none;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+      /*라디오버튼 숨김*/
+      input {
+        display: none;
+    }
+
+        label {
+          min-width: 23%;
+          max-width: 23%;
+          display: inline-block;
+          margin: 0 auto;
+
+          padding: 10px 15px;
+          font-weight: 600;
+          font-size: 14px;
+          text-align: center;
+          color: #bbb;
+          border: 1px solid transparent;}
+
+          label:hover {
+            color: #ba0d0d;
+            cursor: pointer;}
+
+            /*input 클릭시, label 스타일*/
+            input:checked + label {
+              color: #555;
+              border: 1px solid #ddd;
+              border-top: 2px solid #ba0d0d;
+              border-bottom: 1px solid #ffffff;}
+
+              #tab1:checked ~ #content1,
+              #tab2:checked ~ #content2,
+              #tab3:checked ~ #content3,
+              #tab4:checked ~ #content4 {
+                display: block;}
+
 
 
 @media screen and (max-width: 1200px) {
