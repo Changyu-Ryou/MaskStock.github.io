@@ -1,0 +1,268 @@
+.sale-point{
+    width: 100%;
+    min-height: 200px;
+    text-align: center;
+    justify-content: space-evenly;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+.sale-box{
+    overflow: hidden;
+    font-size: 10px;
+    font-family: "SF Pro Display", sans-serif;
+    text-align: center;
+    width: 70%;
+    height: 200px;
+    border: 1px solid #e9ecef;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 70px;
+
+    border-radius: 15px;
+    display: inline-block;
+    background-color: white;
+
+}
+
+.sale-img-box{
+    display: inline-block;
+    height: 100%;
+    width: 29%;
+    float: left;
+    max-width: 300px;
+    border-right: 1px solid #e9ecef;
+    background-image: url('img/hero/iphone_11/iphone_11_large.jpg');
+    background-size: auto 100%;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+.sale-text-box{
+    
+    width: 70%;
+    text-align: left;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.sale-title{
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.sale-subtitle{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    height: 47px;
+    font-size: 20px;
+    font-weight: 300;
+    overflow: hidden;
+     text-overflow: ellipsis; /* 여러 줄 자르기 추가 스타일 */ 
+     white-space: normal; 
+     line-height: 1.2; 
+     height: 2.4em;
+     text-align: left; 
+     word-wrap: break-word; 
+     display: -webkit-box; 
+     -webkit-line-clamp: 2; 
+     -webkit-box-orient: vertical;
+
+
+}
+
+.sale-price{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    float: left;
+    color: darkcyan;
+}
+
+.sale-time{
+    color: tomato;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    float: right;
+    
+}
+
+.main {
+    width: 100%;
+    margin: 50px auto;
+    background: #ffffff;
+}
+
+section {
+    display: none;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+      /*라디오버튼 숨김*/
+      input {
+        display: none;
+    }
+
+        label {
+          min-width: 23%;
+          max-width: 23%;
+          display: inline-block;
+          margin: 0 auto;
+
+          padding: 10px 15px;
+          font-weight: 600;
+          font-size: 14px;
+          text-align: center;
+          color: #bbb;
+          border: 1px solid transparent;}
+
+          label:hover {
+            color: #ba0d0d;
+            cursor: pointer;}
+
+            /*input 클릭시, label 스타일*/
+            input:checked + label {
+              color: #555;
+              border: 1px solid #ddd;
+              border-top: 2px solid #ba0d0d;
+              border-bottom: 1px solid #ffffff;}
+
+              #tab1:checked ~ #content1,
+              #tab2:checked ~ #content2,
+              #tab3:checked ~ #content3,
+              #tab4:checked ~ #content4 {
+                display: block;}
+
+
+
+@media screen and (max-width: 1200px) {
+
+    .sale-price{
+        padding-left: 20px;
+        padding-right: 10px;
+        padding-top: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        float: left;
+        color: darkcyan;
+    }
+    
+    .sale-time{
+        color: tomato;
+        padding-left: 10px;
+        padding-right: 20px;
+        padding-top: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        float: right;
+        
+    }
+
+}
+
+
+
+@media screen and (max-width: 780px){
+
+    .sale-box{
+        font-size: 10px;
+        font-family: "SF Pro Display", sans-serif;
+        text-align: center;
+        width: 90%;
+        height: 150px;
+        border: 1px solid #e9ecef;
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 50px;
+        overflow: hidden;
+    
+        border-radius: 15px;
+        display: inline-block;
+        background-color: white;
+    
+    }
+
+    .sale-img-box{
+        display: inline-block;
+        height: 100%;
+        width: 40%;
+        float: left;
+        max-width: 300px;
+        border-right: 1px solid #e9ecef;
+        background-image: url('img/hero/iphone_11/iphone_11_large.jpg');
+        background-size: auto 100%;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+    }
+
+
+.sale-text-box{
+    
+    width: 55%;
+    text-align: left;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.sale-title{
+    padding-left: 15px;
+    padding-top: 15px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.sale-subtitle{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 300;
+    overflow: hidden;
+     text-overflow: ellipsis; /* 여러 줄 자르기 추가 스타일 */ 
+     white-space: normal; 
+     line-height: 1; 
+     height: 2em;
+     text-align: left; 
+     word-wrap: break-word; 
+     display: -webkit-box; 
+     -webkit-line-clamp: 2; 
+     -webkit-box-orient: vertical;
+
+
+}
+
+.sale-price{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+    color: darkcyan;
+}
+
+.sale-time{
+    color: tomato;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    float: left;
+    
+}
+
+}
